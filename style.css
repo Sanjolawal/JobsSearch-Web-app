@@ -1,0 +1,67 @@
+/* HomePage styles */
+
+@media all and (max-width: 2500px) {
+  body {
+    background: rgb(255, 255, 255);
+    margin: 0;
+    padding: 0;
+  }
+  .indexNav {
+    padding: 0vh 3vw 0 3vw;
+  }
+  .indexH1 {
+    font-family: "Public Sans", sans-serif;
+    font-size: clamp(34px, 2.8vw, 2.9vw);
+  }
+  .indexSpan1 {
+    color: rgb(235, 52, 225);
+  }
+  .indexH2 {
+    font-size: clamp(34px, 2.8vw, 2.9vw);
+  }
+  .indexHeader {
+    display: grid;
+    padding: 0 4vw 0 4vw;
+    grid-template-columns: repeat(2, 50%);
+    column-gap: 4vw;
+    /* background: red; */
+  }
+  .indexP1 {
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-size: clamp(20px, 1.8vw, 1.85vw);
+  }
+  .indexBtn {
+    color: white;
+    background: rgb(235, 52, 225);
+    border: none;
+    border-radius: 6px;
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-size: clamp(24px, 2vw, 2.1vw);
+    text-align: center;
+    padding: 0.4vh 2vw 0.8vh 2vw;
+  }
+  .indexBtn:hover {
+    background: rgb(146, 47, 153);
+  }
+  .indexImg {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 750px) {
+  .indexHeader {
+    display: block;
+  }
+  .indexH2 {
+    margin: 8vh 0 0 0;
+  }
+  .indexP1 {
+    margin: 0.5vh 0 3vh 0;
+  }
+  .indexBtn {
+    padding: 0.4vh 5vw 0.8vh 5vw;
+  }
+  .indexImg {
+    margin-top: 5vh;
+  }
+}
