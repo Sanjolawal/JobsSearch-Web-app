@@ -6,6 +6,32 @@
     margin: 0;
     padding: 0;
   }
+  nav {
+    background: rgb(255, 255, 255);
+  }
+  .notice {
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    font-size: clamp(20px, 2vw, 2.1vw);
+    padding: 0.6vh 2% 0.6vh 2%;
+  }
+  .notice1,
+  .noticeClose {
+    margin: 0;
+  }
+  .notice a {
+    color: rgb(235, 52, 225);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .noticeClose:hover,
+  .notice a:hover {
+    cursor: pointer;
+    color: rgb(146, 47, 153);
+  }
   .indexNav {
     padding: 0vh 3vw 0 3vw;
   }
@@ -13,7 +39,8 @@
     font-family: "Public Sans", sans-serif;
     font-size: clamp(34px, 2.8vw, 2.9vw);
   }
-  .indexSpan1 {
+  .indexSpan1,
+  .loginSpan1 {
     color: rgb(235, 52, 225);
   }
   .indexH2 {
@@ -39,6 +66,11 @@
     font-size: clamp(24px, 2vw, 2.1vw);
     text-align: center;
     padding: 0.4vh 2vw 0.8vh 2vw;
+    cursor: pointer;
+  }
+  .indexBtn a {
+    color: white;
+    text-decoration: none;
   }
   .indexBtn:hover {
     background: rgb(146, 47, 153);
@@ -63,5 +95,231 @@
   }
   .indexImg {
     margin-top: 5vh;
+  }
+}
+
+/* Resgisteration and login styles */
+@media all and (max-width: 2500px) {
+  .loginBody {
+    display: grid;
+    justify-content: center;
+  }
+  .dashboardBody1{
+     display: none;
+    justify-content: center;
+  }
+  .loginDiv,
+  .registerDiv, .dashboardDiv {
+    width: 30vw;
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.1);
+    padding: 0 5% 0 5%;
+  }
+  .registerDiv {
+    display: none;
+  }
+  .loginH1 {
+    text-align: center;
+    font-family: "Public Sans", sans-serif;
+  }
+  .loginLabel {
+    font-family: "Public Sans", sans-serif;
+  }
+  .email,
+  .password {
+    width: 100%;
+    background: rgb(245, 245, 245);
+    height: 3vh;
+    border: 2px solid rgb(0, 0, 0, 0.1);
+    border-radius: 5px;
+  }
+  .email:focus,
+  .password:focus {
+    outline: 2.5px solid rgb(235, 52, 225);
+    border-radius: 3px;
+  }
+  .loginBtn {
+    width: 100%;
+    text-align: center;
+    background: rgb(235, 52, 225);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.8vh 0 0.8vh 0;
+    cursor: pointer;
+  }
+  .loginBtn:hover {
+    background: rgb(146, 47, 153);
+  }
+  .loginP1,
+  .registerP1 {
+    text-align: center;
+    cursor: pointer;
+  }
+  .loginSpan1:hover {
+    color: rgb(146, 47, 153);
+  }
+  @media all and (max-width: 1250px) {
+    .loginDiv,
+    .registerDiv, .dashboardDiv {
+      width: 36vw;
+      box-shadow: 0 0 20px rgb(0, 0, 0, 0.1);
+      padding: 0 5% 0 5%;
+    }
+  }
+  @media all and (max-width: 750px) {
+    .loginDiv,
+    .registerDiv, .dashboardDiv {
+      width: 60vw;
+      box-shadow: 0 0 20px rgb(0, 0, 0, 0.1);
+      padding: 0 5% 0 5%;
+    }
+  }
+  @media all and (max-width: 490px) {
+    .loginDiv,
+    .registerDiv, .dashboardDiv {
+      width: 74vw;
+      box-shadow: 0 0 20px rgb(0, 0, 0, 0.1);
+      padding: 0 5% 0 5%;
+    }
+  }
+}
+
+/* Dashboard page styling */
+@media all and (max-width: 2500px) {
+  .dashboardDiv{
+    margin: 10vh 0 5vh 0;
+    background:rgb(255,255,255);
+    background:white;
+    padding-bottom:3vh;
+    border-radius:5px;
+  }
+  .boardMain {
+    background: rgb(235, 52, 225, 0.03);
+  }
+  .dashNav {
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    padding: 0vh 10vw 0 6vw;
+  }
+  .boardInfo {
+    display: flex;
+    justify-content: space-between;
+    /* background: red; */
+    align-items: center;
+    width: 24%;
+  }
+  .boardName{
+    font-family: "Barlow Semi Condensed", sans-serif;
+    font-size: clamp(20px, 1.8vw, 1.85vw);
+  }
+  .boardExit {
+    color: white;
+    background: rgb(235, 52, 225);
+    font-size:clamp{20px, 2vw, 2.1vw};
+    text-align:center;
+    padding:1vh 1.5vw 1vh 1.5vw;
+    border:none;
+    border-radius:3px;
+  }
+  .boardExit:hover{
+    background: rgb(146, 47, 153);
+  }
+  .dashboardP1{
+    text-align:center;
+    font-size: clamp(20px, 1.8vw, 1.85vw);
+  }
+  .jobsContainer{
+    display:grid;
+    grid-template-columns: repeat(3, 30%);
+    margin: 0 6% 3vh 6%;
+    column-gap:5%;
+    row-gap:3vh;
+  }
+  .jobsMain{
+    background: rgb(255,255,255);
+    box-shadow: 0 0 20px rgb(0,0,0,0.1);
+    padding:0 0 0 2vw;
+    display:grid; 
+  }
+  .jobsDate{
+    font-family: "Barlow Semi Condensed", sans-serif;
+    text-align:center;
+    padding:1.2vh 0.8vw 1.2vh 0.8vw;
+    color: rgb(235, 52, 225);
+    background: rgb(235, 52, 225, 0.2);
+    margin:0;
+    width:fit-content;
+    display:grid;
+    justify-self:end;
+  }
+  .position{
+       font-family: "Public Sans", sans-serif;
+      font-size: clamp(15px,1.5vw,1.6vw);
+  }
+  .company{
+    color:rgb(0,6,0,0.9);
+    border-radius:4px;
+    background:rgb(0,0,0,0.2);
+    width:fit-content;
+    text-align:center;
+    padding:1vh 0.8vw 1vh 0.8vw;
+    margin-top:0;
+
+  }
+  .jobsCtas{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .edit, .delete{
+    background:none;
+    border:none;
+    cursor:pointer;
+  }
+  .edit{
+    color:goldenrod;
+  }
+  .delete{
+    color:red;
+  }
+  .status{
+    padding: 0 2vw 0 0;
+     color: rgb(146, 47, 153);
+  }
+  .title{
+    color:white;
+    background: rgb(235, 52, 225);
+    padding:1vh 1vw 1vh 1vw;
+    border-radius:4px;
+    text-align:center;
+    width:fit-content;
+    margin-left:48%;
+    display:none;
+  }
+  @media all and (max-width:1050px){
+  .jobsContainer{
+    grid-template-columns: repeat(2, 47.5%);
+  }
+  }
+   @media all and (max-width:650px){
+  .jobsContainer{
+    grid-template-columns: repeat(1, 70%);
+    justify-content:center;
+  }
+  }
+   @media all and (max-width:500px){
+  .jobsContainer{
+    grid-template-columns: repeat(1, 90%);
+  }
+  }
+  @media all and (max-width:750px){
+  
+    .boardInfo{
+      width:14%;
+    }
+    .boardName{
+     display:none;
+    }
   }
 }
