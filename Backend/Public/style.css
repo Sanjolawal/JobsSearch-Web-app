@@ -125,7 +125,8 @@
     font-family: "Public Sans", sans-serif;
   }
   .email,
-  .password,.name {
+  .password,.name,.email2,.password2,
+   .companyInput,.positionInput, .companyChanged,.positionChanged {
     width: 100%;
     background: rgb(245, 245, 245);
     height: 3vh;
@@ -133,15 +134,18 @@
     border-radius: 5px;
   }
   .email:focus,
-  .password:focus,.name:focus {
+  .password:focus,.name:focus,.email2:focus,
+  .password2:focus,.positionInput:hover,
+  .companyInput:focus,
+  .companyChanged:focus,.positionChanged:focus {
     outline: 2.5px solid rgb(235, 52, 225);
     border-radius: 3px;
   }
-  .loginErrors, .loginError{
+  .loginErrors, .loginError, .jobError{
     margin:0;
     font-size:clamp(20px, 1.6vw, 1.7vw)
   }
-  .loginBtn,.registerBtn {
+  .loginBtn,.registerBtn, .jobBtn, .updateBtn {
     width: 100%;
     text-align: center;
     background: rgb(235, 52, 225);
@@ -151,7 +155,7 @@
     padding: 0.8vh 0 0.8vh 0;
     cursor: pointer;
   }
-  .loginBtn:hover, .registerBtn:hover {
+  .loginBtn:hover, .registerBtn:hover, .jobBtn:hover, .updateBtn:hover {
     background: rgb(146, 47, 153);
   }
   .loginP1,

@@ -25,7 +25,7 @@
       </p>
       <p class="noticeClose">❌</p>
     </section>
-    <nav class="dashNav">
+     <nav class="dashNav">
       <h1 class="indexH1">Jobs<span class="indexSpan1">Search</span></h1>
       <div class="boardInfo">
         <p class="boardName">Hello, Johnson</p>
@@ -38,16 +38,17 @@
       <div class="dashboardDiv">
         <h1 class="loginH1">New Job</h1><br.<br>
         <label for="text" class="loginLabel" >Company:</label>
-        <input type="text" class="email" /><br><br>
+        <input type="text" class="companyInput" /><br><br>
         <label for="text" class="loginLabel" >Position:</label>
-        <input type="text" class="password" /><br><br>
-        <button class="loginBtn">Submit</button>
+        <input type="text" class="positionInput" /><br><br>
+        <p class="jobError"></p>
+        <button class="jobBtn">Submit</button>
       </div>
     </div>
 
       <p class="dashboardP1">   You have no jobs to display </p>
 
-<!-- <div class="jobsContainer">
+<div class="jobsContainer">
 
   <div class="jobsMain">
     <h5 class="jobsDate"> December 21st 2021 </h5>
@@ -62,27 +63,27 @@
     </div>
   </div>      
 
-</div> -->
+</div>
 
 
-<!-- <div>
+ <div>
   <p class="title">Dashboard</p>
    <div class="dashboardBody1">
       <div class="dashboardDiv">
         <h1 class="loginH1">Update Job</h1><br.<br>
         <label for="text" class="loginLabel" >Company:</label>
-        <input type="text" class="email" /><br><br>
+        <input type="text" class="companyChanged" /><br><br>
         <label for="text" class="loginLabel" >Position:</label>
-        <input type="text" class="password" /><br><br>
+        <input type="text" class="positionChanged" /><br><br>
         <select name="status" id="status">
           <option value="pend">PENDING</option>
           <option value="interview">INTERVIEWED</option>
           <option value="fail">DECLINED</option>
         </select><br><br>
-        <button class="loginBtn">Edit</button>
+        <button class="updateBtn">Edit</button>
       </div>
     </div>   
-</div> -->
+</div>
 
  <script src="dashboard.js"></script>
 </body>
