@@ -28,7 +28,7 @@ function Showlogin() {
 
 RegisterP.addEventListener(`click`, Showlogin);
 
-// script for sending inputted login user data to server
+// script for sending inputted LOGIN user data to server
 
 const loginBtn = document.querySelector(`.loginBtn`);
 
@@ -45,22 +45,35 @@ const sendLoginData = async () => {
       loginErrors.style.marginBottom = `0`;
     }, 2500);
   }
-  const responseObject = await fetch(``, {
+  const responseObject = await fetch(`api/v1/users`, {
     method: `POST`,
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: email.value,
+      Email: email.value,
       password: password.value,
     }),
   });
   email.value = ``;
   password.value = ``;
   // login errors variable already declared at line 5
-  loginErrors.style.color = `green`;
+  const response = await responseObject.json();
+  const { msg } = response;
+  if (responseObject.status === 200) {
+    return (
+      (loginErrors.style.color = `green`),
+      (loginErrors.style.marginBottom = `1vh`),
+      (loginErrors.innerText = msg),
+      setTimeout(() => {
+        (loginErrors.innerText = ``), (loginErrors.style.marginBottom = `0`);
+      }, 1500),
+      window.location.assign(`/dashboard.html`)
+    );
+  }
+  loginErrors.style.color = `red`;
   loginErrors.style.marginBottom = `1vh`;
-  loginErrors.innerText = `Data Sent Succesfully`;
+  loginErrors.innerText = msg;
   setTimeout(() => {
     loginErrors.innerText = ``;
     loginErrors.style.marginBottom = `0`;
@@ -69,7 +82,7 @@ const sendLoginData = async () => {
 
 loginBtn.addEventListener(`click`, sendLoginData);
 
-// script for sending inputted registeration user data to server
+// script for sending inputted RREGISTERATION user data to server
 
 const registerBtn = document.querySelector(`.registerBtn`);
 const loginError = document.querySelector(`.loginError`);
@@ -89,28 +102,50 @@ const sendRegisterationData = async () => {
       loginError.style.marginBottom = `0`;
     }, 2500);
   }
-  const responseObject = await fetch(``, {
+  const responseObject = await fetch(`/api/v1/userinfo`, {
     method: `POST`,
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: email2.value,
-      name: name.value,
-      password: password2.value,
+      Email: email2.value,
+      Name: name.value,
+      protection: password2.value,
     }),
   });
   name.value = ``;
   email2.value = ``;
   password2.value = ``;
+  const { msg } = await responseObject.json();
+  console.log(responseObject);
   // login error already declared at line 79 of this script
-  loginError.style.color = `green`;
-  loginError.style.marginBottom = `1vh`;
-  loginError.innerText = `Data sent succesfully`;
-  setTimeout(() => {
-    loginError.innerText = ``;
-    loginError.style.marginBottom = `0`;
-  }, 2500);
+  if (responseObject.status === 200) {
+    loginError.style.color = `green`;
+    loginError.style.marginBottom = `1vh`;
+    loginError.innerText = `Data sent succesfully`;
+    setTimeout(() => {
+      loginError.innerText = ``;
+      loginError.style.marginBottom = `0`;
+    }, 2000);
+    // const me = await fetch(`./dashboard.html`, {
+    //   method: `POST`,
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ msg: msg.split(` `)[0] }),
+    // });
+    // console.log(me);
+    document.cookie = `name=${msg}`;
+    location.assign(`/dashboard.html`);
+  } else {
+    loginError.style.color = `red`;
+    loginError.style.marginBottom = `1vh`;
+    loginError.innerText = msg;
+    setTimeout(() => {
+      loginError.innerText = ``;
+      loginError.style.marginBottom = `0`;
+    }, 10000);
+  }
 };
 
 registerBtn.addEventListener(`click`, sendRegisterationData);

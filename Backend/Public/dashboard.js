@@ -8,6 +8,12 @@ function Remove(e) {
 
 noticeBtn.addEventListener(`click`, Remove);
 
+// script for timed greetings
+const mobileName = document.querySelector(`.mobileName`);
+setTimeout(() => {
+  mobileName.style.display = `none`;
+}, 4500);
+
 // script for sending user inputted job and company data to server
 
 const jobBtn = document.querySelector(`.jobBtn`);

@@ -48,7 +48,7 @@
   }
   .indexHeader {
     display: grid;
-    padding: 0 4vw 0 4vw;
+    padding: 0 20vw 0 20vw;
     grid-template-columns: repeat(2, 50%);
     column-gap: 4vw;
     /* background: red; */
@@ -77,6 +77,16 @@
   }
   .indexImg {
     width: 100%;
+  }
+}
+@media all and (max-width: 2100px){
+  .indexHeader{
+      padding: 0 15vw 0 15vw;
+  }
+}
+@media all and (max-width: 1600px){
+  .indexHeader{
+      padding: 0 4vw 0 4vw;
   }
 }
 
@@ -143,7 +153,7 @@
   }
   .loginErrors, .loginError, .jobError{
     margin:0;
-    font-size:clamp(20px, 1.6vw, 1.7vw)
+    font-size:clamp(16px, 1.2vw, 1.3vw)
   }
   .loginBtn,.registerBtn, .jobBtn, .updateBtn {
     width: 100%;
@@ -217,9 +227,12 @@
     align-items: center;
     width: 24%;
   }
-  .boardName{
+  .boardName {
     font-family: "Barlow Semi Condensed", sans-serif;
     font-size: clamp(20px, 1.8vw, 1.85vw);
+  }
+  .mobileName{
+    display:none;
   }
   .boardExit {
     color: white;
@@ -305,29 +318,42 @@
     margin-left:48%;
     display:none;
   }
+}
   @media all and (max-width:1050px){
   .jobsContainer{
     grid-template-columns: repeat(2, 47.5%);
   }
   }
+
+   @media all and (max-width:750px){
+   .boardInfo{
+      width:14%;
+    }
+    .boardName{
+     display:none;
+    }
+    .mobileName{
+      display:block;
+      font-family: "Barlow Semi Condensed", sans-serif;
+      font-size:24px;
+      margin:0;
+      margin-left:-10vw;
+      color:rgb(235,54,225);
+    }
+  }
+
    @media all and (max-width:650px){
   .jobsContainer{
     grid-template-columns: repeat(1, 70%);
     justify-content:center;
   }
   }
+
    @media all and (max-width:500px){
   .jobsContainer{
     grid-template-columns: repeat(1, 90%);
   }
   }
-  @media all and (max-width:750px){
-  
-    .boardInfo{
-      width:14%;
-    }
-    .boardName{
-     display:none;
-    }
-  }
-}
+ 
+
+
