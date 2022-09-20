@@ -15,7 +15,7 @@ const Formdata = async (req, res) => {
     res.cookie("access_token", `Bearer ${token}`, {
       expires: new Date(Date.now() + 720 * 3600000),
       httpOnly: true,
-      path: `/dashboard.html`,
+      path: `/`,
     });
     res.status(200).json({ msg: Name.split(` `)[0] });
   } catch (error) {
@@ -31,11 +31,9 @@ const loginData = async (req, res) => {
 
     const check = await userModel.findOne({ Email });
     if (!check) {
-      return res
-        .status(400)
-        .json({
-          msg: ` Email not yet registered in our database. `,
-        });
+      return res.status(400).json({
+        msg: ` Email not yet registered in our database. `,
+      });
     }
     const pwdValidation = await bcrypt.compare(password, check.Password);
     if (pwdValidation) {
@@ -46,9 +44,9 @@ const loginData = async (req, res) => {
       res.cookie(`access_token`, `Bearer ${token}`, {
         expires: new Date(Date.now() + 720 * 3600000),
         httpOnly: true,
-        path: `/dashboard.html`,
+        path: `/`,
       });
-      return res.status(200).json({ msg: `Welcome back` });
+      return res.status(200).json({ msg: check.Name.split(` `)[0] });
     }
     return res.status(400).json({ msg: `Password is not valid` });
   } catch (error) {
@@ -56,4 +54,10 @@ const loginData = async (req, res) => {
   }
 };
 
-module.exports = { Formdata, loginData };
+// middleware for logging out/ removing cookies
+const removeCookies = (req, res) => {
+  res.clearCookie(`access_token`);
+  res.redirect(`/dashboard.html`);
+};
+
+module.exports = { Formdata, loginData, removeCookies };

@@ -1,16 +1,17 @@
 const mongoose = require(`mongoose`);
 
 const jobSchema = mongoose.Schema({
-  Company: {
+  companyInput: {
     type: String,
     required: [true, `Please provide desired company`],
     minlength: [1, `Company name is too short`],
   },
-  Position: {
+  positionInput: {
     type: String,
     required: [true, `Please provide position you are looking for`],
     minlength: [1, `Company name is too short`],
   },
+  status: String,
 });
 
 const jobModel = mongoose.model(`Job`, jobSchema);

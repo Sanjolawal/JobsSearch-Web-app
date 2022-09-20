@@ -64,11 +64,14 @@ const sendLoginData = async () => {
     return (
       (loginErrors.style.color = `green`),
       (loginErrors.style.marginBottom = `1vh`),
-      (loginErrors.innerText = msg),
+      (loginErrors.innerText = `Welcome back`),
       setTimeout(() => {
         (loginErrors.innerText = ``), (loginErrors.style.marginBottom = `0`);
       }, 1500),
-      window.location.assign(`/dashboard.html`)
+      (document.cookie = `name=${msg}; expires=${new Date(
+        Date.now() + 720 * 3600000
+      )}; path=/`),
+      location.assign(`/dashboard.html`)
     );
   }
   loginErrors.style.color = `red`;
@@ -127,15 +130,9 @@ const sendRegisterationData = async () => {
       loginError.innerText = ``;
       loginError.style.marginBottom = `0`;
     }, 2000);
-    // const me = await fetch(`./dashboard.html`, {
-    //   method: `POST`,
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ msg: msg.split(` `)[0] }),
-    // });
-    // console.log(me);
-    document.cookie = `name=${msg}`;
+    document.cookie = `name=${msg}; expires=${new Date(
+      Date.now() + 720 * 3600000
+    )}; path=/`;
     location.assign(`/dashboard.html`);
   } else {
     loginError.style.color = `red`;
