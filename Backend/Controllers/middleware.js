@@ -17,7 +17,7 @@ const Formdata = async (req, res) => {
       httpOnly: true,
       path: `/`,
     });
-    res.status(200).json({ msg: Name.split(` `)[0] });
+    res.status(200).json({ msg: Name.split(` `)[0], token: `Bearer ${token}` });
   } catch (error) {
     console.log(error.message);
     res.status(500).json({ msg: error.message });
@@ -46,7 +46,9 @@ const loginData = async (req, res) => {
         httpOnly: true,
         path: `/`,
       });
-      return res.status(200).json({ msg: check.Name.split(` `)[0] });
+      return res
+        .status(200)
+        .json({ msg: check.Name.split(` `)[0], token: `Bearer ${token}` });
     }
     return res.status(400).json({ msg: `Password is not valid` });
   } catch (error) {

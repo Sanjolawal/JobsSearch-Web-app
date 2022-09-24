@@ -1,6 +1,10 @@
 const mongoose = require(`mongoose`);
 
 const jobSchema = mongoose.Schema({
+  Date: {
+    type: Date,
+    default: new Date(),
+  },
   companyInput: {
     type: String,
     required: [true, `Please provide desired company`],

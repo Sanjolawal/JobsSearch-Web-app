@@ -59,7 +59,7 @@ const sendLoginData = async () => {
   password.value = ``;
   // login errors variable already declared at line 5
   const response = await responseObject.json();
-  const { msg } = response;
+  const { msg, token } = response;
   if (responseObject.status === 200) {
     return (
       (loginErrors.style.color = `green`),
@@ -71,6 +71,7 @@ const sendLoginData = async () => {
       (document.cookie = `name=${msg}; expires=${new Date(
         Date.now() + 720 * 3600000
       )}; path=/`),
+      localStorage.setItem(`token`, token),
       location.assign(`/dashboard.html`)
     );
   }
@@ -111,6 +112,7 @@ const sendRegisterationData = async () => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
+      Date: ``,
       Email: email2.value,
       Name: name.value,
       protection: password2.value,
@@ -119,7 +121,7 @@ const sendRegisterationData = async () => {
   name.value = ``;
   email2.value = ``;
   password2.value = ``;
-  const { msg } = await responseObject.json();
+  const { msg, token } = await responseObject.json();
   console.log(responseObject);
   // login error already declared at line 79 of this script
   if (responseObject.status === 200) {
@@ -133,6 +135,7 @@ const sendRegisterationData = async () => {
     document.cookie = `name=${msg}; expires=${new Date(
       Date.now() + 720 * 3600000
     )}; path=/`;
+    localStorage.setItem(`token`, token);
     location.assign(`/dashboard.html`);
   } else {
     loginError.style.color = `red`;

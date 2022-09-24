@@ -1,9 +1,28 @@
 const router = require(`express`).Router();
+
 const { Formdata, loginData, removeCookies } = require(`./middleware`);
-const { jobsSent, jobsToSend } = require(`./jobsmiddlewares`);
+
+const { authentication } = require(`../Auth`);
+
+const {
+  jobsSent,
+  jobsToSend,
+  getJob,
+  updateJob,
+  deleteJob,
+} = require(`./jobsmiddlewares`);
+
 router.post(`/api/v1/userinfo`, Formdata);
 router.post(`/api/v1/users`, loginData);
 router.get(`/remove`, removeCookies);
-router.route(`/api/v1/jobs`).get(jobsToSend).post(jobsSent);
+router
+  .route(`/api/v1/jobs`)
+  .get(authentication, jobsToSend)
+  .post(authentication, jobsSent);
+router
+  .route(`/api/v1/jobs/:id`)
+  .get(authentication, getJob)
+  .put(authentication, updateJob)
+  .delete(deleteJob);
 
 module.exports = router;

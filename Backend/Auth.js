@@ -1,8 +1,15 @@
 const jwt = require(`jsonwebtoken`);
 
 const authentication = (req, res, next) => {
-  if (!req.headers.authentication) {
-    return res.redirect(`/Register.html`);
+  if (!req.headers.authorization) {
+    return res
+      .status(400)
+      .json({ msg: `Authorization credentials not present` });
+  }
+  const auth = req.headers.authorization;
+  const payload = jwt.verify(auth.split(` `)[1], process.env.secret);
+  if (!auth.startsWith(`Bearer `) || !payload) {
+    return res.status(400).json({ msg: `Authorization credentials not valid` });
   }
   next();
 };

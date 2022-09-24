@@ -4,7 +4,7 @@ const app = express();
 const dotenv = require(`dotenv`).config();
 const path = require(`path`);
 const cookieParser = require(`cookie-parser`);
-const { authentication, cookieVerification } = require(`./Auth`);
+const { cookieVerification } = require(`./Auth`);
 
 let Port = 3000;
 
