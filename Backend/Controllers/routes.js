@@ -17,8 +17,8 @@ router.post(`/api/v1/users`, loginData);
 router.get(`/remove`, removeCookies);
 router
   .route(`/api/v1/jobs`)
-  .get(authentication, jobsToSend)
-  .post(authentication, jobsSent);
+  .post(authentication, jobsSent)
+  .get(authentication, jobsToSend);
 router
   .route(`/api/v1/jobs/:id`)
   .get(authentication, getJob)

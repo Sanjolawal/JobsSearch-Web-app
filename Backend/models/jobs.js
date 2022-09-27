@@ -16,6 +16,10 @@ const jobSchema = mongoose.Schema({
     minlength: [1, `Company name is too short`],
   },
   status: String,
+  createdBy: {
+    type: mongoose.Types.ObjectId,
+    ref: `User`,
+  },
 });
 
 const jobModel = mongoose.model(`Job`, jobSchema);

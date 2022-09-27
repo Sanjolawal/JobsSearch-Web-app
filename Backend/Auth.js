@@ -8,6 +8,7 @@ const authentication = (req, res, next) => {
   }
   const auth = req.headers.authorization;
   const payload = jwt.verify(auth.split(` `)[1], process.env.secret);
+  res.locals.id = payload._id;
   if (!auth.startsWith(`Bearer `) || !payload) {
     return res.status(400).json({ msg: `Authorization credentials not valid` });
   }

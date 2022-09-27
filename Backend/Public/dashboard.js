@@ -13,7 +13,7 @@ noticeBtn.addEventListener(`click`, Remove);
 const boardExit = document.querySelector(`.boardExit`);
 const Logout = async () => {
   document.cookie = `name=; expires=${new Date(Date.now() + 0 * 0)}`;
-  localStorage.clear();
+  localStorage.removeItem(`token`);
   const me = await fetch(`/remove`);
   window.location.assign(`/dashboard.html`);
 };
@@ -37,19 +37,18 @@ const display = async () => {
     const response = await responseObject2.json();
     const elements = response.map((each) => {
       return `<div data-id="${each._id}" class="jobsMain">
-    <h5 class="jobsDate"> ${each.Date} </h5>
-    <p class="position">${each.positionInput}</p>
-    <p class="company">${each.companyInput.toUpperCase()}</p>
-    <div class="jobsCtas">
-      <div>
-        <button class="edit">Edit</button>
-         <button class="delete">Delete</button>
+      <h5 class="jobsDate"> ${each.Date} </h5>
+      <p class="position">${each.positionInput}</p>
+      <p class="company">${each.companyInput.toUpperCase()}</p>
+      <div class="jobsCtas">
+        <div>
+          <button class="edit">Edit</button>
+           <button class="delete">Delete</button>
+         </div>
+         <p class="status">${each.status}</p>
        </div>
-       <p class="status">${each.status}</p>
-     </div>
-      </div>`;
+        </div>`;
     });
-
     if (elements.length >= 1) {
       const dashboardP1 = document.querySelector(`.dashboardP1`);
       dashboardP1.style.display = `none`;
@@ -101,7 +100,7 @@ const sendJobData = async () => {
     dashboardP1.style.display = `none`;
   }, 3500);
   if (responseObject.status === 200) {
-    const responseObject2 = await fetch(`/api/v1/jobs`, {
+    const responseObject2 = await fetch(`/api/v1/jobs/`, {
       headers: {
         Authorization: localStorage.getItem(`token`),
       },

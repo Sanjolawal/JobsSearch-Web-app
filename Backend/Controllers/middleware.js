@@ -8,8 +8,8 @@ const Formdata = async (req, res) => {
   try {
     const { Name, Email, protection } = req.body;
     const Password = bcrypt.hashSync(protection, 10);
-    await userModel.create({ Name, Email, Password });
-    const token = jwt.sign({ Name, Email, Password }, process.env.secret, {
+    const doc = await userModel.create({ Name, Email, Password });
+    const token = jwt.sign(doc.toJSON(), process.env.secret, {
       expiresIn: `30d`,
     });
     res.cookie("access_token", `Bearer ${token}`, {
@@ -37,7 +37,7 @@ const loginData = async (req, res) => {
     }
     const pwdValidation = await bcrypt.compare(password, check.Password);
     if (pwdValidation) {
-      const token = jwt.sign(req.body, process.env.secret, {
+      const token = jwt.sign(check.toJSON(), process.env.secret, {
         expiresIn: `30d`,
       });
 
