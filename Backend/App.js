@@ -19,7 +19,7 @@ const apiLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-let Port = 3000;
+let Port = process.env.PORT || 3000;
 
 const connect = async () => {
   try {
