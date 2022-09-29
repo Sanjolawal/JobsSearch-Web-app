@@ -243,6 +243,7 @@
     padding:1vh 1.5vw 1vh 1.5vw;
     border:none;
     border-radius:3px;
+    cursor:pointer;
   }
   .boardExit:hover{
     background: rgb(146, 47, 153);
